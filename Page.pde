@@ -12,7 +12,6 @@ abstract class Page {
   }
   
   void draw() {
-    println(java.util.Arrays.toString(bg));
     background(bg[0],bg[1],bg[2]);
     prev.draw();
     next.draw();

@@ -1,29 +1,29 @@
 int page = 0;
 boolean changed = true;
+boolean overNext = false, overPrev = false;
 
 Page[] pages = {
   new FirstPage(),
-  new SecondPage()
+  new SecondPage(),
+  new ThirdPage()
 };
 
 void setup() {
   size(1200,800);
-  noLoop();
-  pages[page].draw();
+  frameRate(1);  // Animate slowly
 }
 
 void draw() {
-  checkClick(mouseX,mouseY);
-  if (changed) pages[page].draw();
+  checkClick(mouseX, mouseY);
+  pages[page].draw();
 }
 
 void checkClick(int x, int y) {
-  int current = page;
-  if (pages[page].prev.isClicked(x,y))      page = max(page - 1, 0);
-  else if (pages[page].next.isClicked(x,y)) page = min(page + 1, pages.length - 1);
-  changed = current != page;
+  overNext = pages[page].next.isClicked(x,y);
+  overPrev = pages[page].prev.isClicked(x,y);
 }
 
 void mousePressed() {
-  redraw();
+  if (overNext) page = min(page + 1, pages.length - 1);
+  if (overPrev) page = max(page - 1, 0);
 }
