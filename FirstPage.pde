@@ -48,7 +48,7 @@ class FirstPage extends Page {
   }
   
   void showTitle() {
-    String name = "How long is the coast of E̶n̶g̶l̶a̶n̶d̶ La Isla de los Alacranes?";
+    String name = "How long is the coast of B̶r̶i̶t̶a̶i̶n̶ La Isla de los Alacranes?";
     int size = 24;
     
     fill(0);
