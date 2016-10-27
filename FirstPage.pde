@@ -1,6 +1,8 @@
 class FirstPage extends Page {
   
-  protected int[] bg = { 163,204,255 };
+  {
+    setBackground(new int[] { 163,204,255 });
+  }
   
   void draw() {
     super.draw();
