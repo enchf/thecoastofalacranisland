@@ -6,7 +6,8 @@ Page[] pages = {
   new FirstPage(),
   new SecondPage(),
   new ThirdPage(),
-  new FourthPage()
+  new FourthPage(),
+  new FifthPage()
 };
 
 void setup() {
