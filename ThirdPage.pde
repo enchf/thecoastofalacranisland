@@ -1,9 +1,10 @@
 class ThirdPage extends Page {
   
   KochFractal k;
+  int offset = 50;
   
   {
-    k = new KochFractal();
+    k = new KochFractal(offset, dimy / 2, dimx - offset, dimy / 2);
   }
   
   void draw() {
