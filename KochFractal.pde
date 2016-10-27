@@ -6,12 +6,17 @@ class KochFractal {
   PVector end;         // A PVector for the end
   ArrayList<KochLine> lines;   // A list to keep track of all the lines
   int count;
+  Rotator r = new KochRotator();
   
   KochFractal(int x1, int y1, int x2, int y2) {
     start = new PVector(x1,y1);
     end = new PVector(x2,y2);
     lines = new ArrayList<KochLine>();
     restart();
+  }
+  
+  void setRotator(Rotator r) {
+    this.r = r;
   }
 
   void nextLevel() {  
