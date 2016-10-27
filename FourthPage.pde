@@ -1,7 +1,8 @@
-class FourthPage extends FirstPage {
+class FourthPage extends Page {
   
   PShape islandShape;
   int fontSize = 24;
+  KochFractal[] island;
   
   int[][] getIslandShape() {
     return new int[][]
@@ -13,10 +14,32 @@ class FourthPage extends FirstPage {
   }
   
   {
+    int[][] shape = getIslandShape();
+    Rotator r = new RandomRotator(60, 120);
+    int[] source, dest;
+    
     setBackground(new int[] { 163,204,255 });
+    island = new KochFractal[shape.length];
+    
+    for (int i = 0; i < shape.length; i++) {
+      source = shape[i];
+      dest   = shape[(i+1) % shape.length];
+      island[i] = new KochFractal(source[0],source[1],dest[0],dest[1]);
+      island[i].setRotator(r);
+    }
   }
   
-  void showName() {}
-  void showTitle() {}
+  void draw() {
+    super.draw();
+    for (KochFractal k : island) {
+      k.render();
+      // Iterate
+      k.nextLevel();
+      // Let's not do it more than 5 times. . .
+      if (k.getCount() > 5) {
+        k.restart();
+      }
+    }
+  }
   
 }
