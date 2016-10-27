@@ -42,18 +42,19 @@ function minimize(val, i) {
 function polygonToPDE(data) {
     var points = data.split(' ');
     var instrs = [];
-    var a,b;
+    var point;
+    var sep;
 
     points = points.map(function(value) { return value.split(',').map(reduceCoord); });
     points = points.map(function(row)   { return row.map(minimize); });
 
-    for (var i = 1; i < points.length; i++) {
-        a = points[i-1];
-        b = points[i];
-        instrs.push(util.format('line(%d,%d,%d,%d);',a[0],a[1],b[0],b[1]));
+    for (var i = 0; i < points.length; i++) {
+        point = points[i];
+        sep = i % 3 == 2 ? '\n' : '';
+        instrs.push(util.format('{%d,%d},%s',point[0],point[1],sep));
     }
 
-    return instrs.join('\n');
+    return '{' + instrs.join('') + '}';
 }
 
 fs.readFile(file, 'utf8', function(err,data) {
