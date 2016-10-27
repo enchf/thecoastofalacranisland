@@ -1,6 +1,7 @@
 class FirstPage extends Page {
   
   PShape islandShape;
+  int fontSize = 24;
   
   int[][] island = {{386,360},{380,364},{384,375},
                     {407,383},{419,402},{419,448},
@@ -42,6 +43,31 @@ class FirstPage extends Page {
     initShape();
     stroke(0);
     shape(islandShape,0,0);
+    showName();
+    showTitle();
+  }
+  
+  void showTitle() {
+    String name = "How long is the coast of E̶n̶g̶l̶a̶n̶d̶ La Isla de los Alacranes?";
+    int size = 24;
+    
+    fill(0);
+    textAlign(CENTER,CENTER);
+    textSize(size);
+    text(name, fontSize, fontSize * 6,size * name.length(), size * 2); 
+  }
+  
+  void showName() {
+    String name = "<ernesto.espinosa>";
+    int x = fontSize;
+    
+    textSize(fontSize);
+    
+    for (int i = 0; i < name.length(); i++) {
+      fill(i == 0 || i == name.length() - 1 ? 0 : 255);
+      text(name.charAt(i), x, fontSize);
+      x += fontSize;
+    }
   }
 
 }
