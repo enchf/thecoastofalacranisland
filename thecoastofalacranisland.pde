@@ -5,7 +5,8 @@ boolean overNext = false, overPrev = false;
 Page[] pages = {
   new FirstPage(),
   new SecondPage(),
-  new ThirdPage()
+  new ThirdPage(),
+  new FourthPage()
 };
 
 void setup() {
