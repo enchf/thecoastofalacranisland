@@ -20,6 +20,10 @@ class KochLine {
     b = end.copy();
   }
   
+  float distance() {
+    return a.dist(b);
+  }
+  
   void display() {
     stroke(255);
     line(a.x, a.y, b.x, b.y);

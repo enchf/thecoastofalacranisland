@@ -3,6 +3,7 @@ class FourthPage extends Page {
   PShape islandShape;
   int fontSize = 24;
   KochFractal[] island;
+  int offlbl = 150;
   
   int[][] getIslandShape() {
     return new int[][]
@@ -30,16 +31,26 @@ class FourthPage extends Page {
   }
   
   void draw() {
+    float distance = 0.0;
     super.draw();
     for (KochFractal k : island) {
       k.render();
       // Iterate
       k.nextLevel();
+      distance += k.distance();
       // Let's not do it more than 5 times. . .
       if (k.getCount() > 5) {
         k.restart();
       }
     }
+    showDistance(distance);
+  }
+  
+  void showDistance(float distance) {
+    fill(0);
+    textSize(36);
+    textAlign(LEFT, CENTER);
+    text(String.format("Distance: %.4f", distance), dimx - (2 * offlbl), offlbl, offlbl * 2, offlbl);
   }
   
 }

@@ -18,6 +18,12 @@ class KochFractal {
   void setRotator(Rotator r) {
     this.r = r;
   }
+  
+  float distance() {
+    float distance = 0.0;
+    for (KochLine l : lines) distance += l.distance();
+    return distance;
+  }
 
   void nextLevel() {  
     // For every line that is in the arraylist
